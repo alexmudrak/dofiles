@@ -108,7 +108,7 @@ Plugin 'davidhalter/jedi-vim'
 
 " Настройка JEDI для VIM + Python "
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatire = 0
+let g:jedi#show_call_signatires = 0
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -119,8 +119,8 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-let g:jedi#environment_path = "venv"
 let g:jedi#environment_path = "/usr/bin/python3"
+let g:jedi#environment_path = "./venv/bin/python3"
 
 " Кастомные плагины "
 Plugin 'flazz/vim-colorschemes'
@@ -156,7 +156,8 @@ set tabstop=4
 " Автоматическое  оформление отступов "
 set autoindent
 " Установка номеров строк "
-set number
+set number relativenumber
+set nu rnu
 " Настройка отступой "
 set tabstop=4
 " При использовании >> << сдвиг на 4 пробела "
