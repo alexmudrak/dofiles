@@ -59,6 +59,35 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+" Asynchronous Lint Engine
+Plugin 'dense-analysis/ale'
+
+"
+let g:ale_python_mypy_auto_pipenv = 1
+let g:ale_python_mypy_auto_poetry = 1
+let g:ale_python_mypy_executable = 'mypy'
+let g:ale_python_mypy_ignore_invalid_syntax = 0
+let g:ale_python_mypy_options = ''
+let g:ale_python_mypy_show_notes = 1
+let g:ale_python_mypy_use_global = 1 
+"
+
+let g:ale_linters = {'python': 'all'}
+let g:ale_fixers = {'python': ['isort', 'yapf', 'remove_trailing_lines', 'trim_whitespace']}
+let g:ale_lsp_suggestions = 1
+let g:ale_fix_on_save = 1
+let g:ale_go_gofmt_options = '-s'
+let g:ale_go_gometalinter_options = '— enable=gosimple — enable=staticcheck'
+let g:ale_completion_enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %code: %%s'
+
+" Pep8 Python
+Plugin 'Vimjas/vim-python-pep8-indent'
+let g:python_pep8_indent_multiline_string = -1
+let g:python_pep8_indent_hang_closing = 0
+
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -100,7 +129,8 @@ Plugin 'davidhalter/jedi-vim'
 " Настройка JEDI для VIM + Python "
 " let g:jedi#completions_enabled = 0
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 0
+let g:jedi#show_call_signatures = 1 
+let g:jedi#show_call_signatures_delay = 3000
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -163,8 +193,8 @@ set t_Co=256
 autocmd BufWritePre *.py normal m`:%s/\s\+$//e ``
 
 " Запуск Python при нажатии на F9 "
-autocmd FileType python map <buffer> <C-b> :w<CR>:exec '! clear; python3 -i' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <C-b> <esc>:w<CR>:exec '! clear; python3 -i' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <C-b> :w<CR>:exec '! clear; python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <C-b> <esc>:w<CR>:exec '! clear; python3' shellescape(@%, 1)<CR>
 
 " Утсновка ограничителя 80 символов "
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
