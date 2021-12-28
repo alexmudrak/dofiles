@@ -59,7 +59,6 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -79,17 +78,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" Install vim powerline"
+" Add airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-
-" Настройки строки состояния "
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -107,8 +98,9 @@ filetype plugin indent on    " required
 Plugin 'davidhalter/jedi-vim'
 
 " Настройка JEDI для VIM + Python "
+" let g:jedi#completions_enabled = 0
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatires = 0
+let g:jedi#show_call_signatures = 0
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -127,24 +119,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'posva/vim-vue'
 Plugin 'tpope/vim-surround'
 
-" Плагины для JS "
-Plugin 'yuezk/vim-js'
-Plugin 'maxmellon/vim-jsx-pretty'
-" Настройка плагинов "
-let g:vim_jsx_pretty_disable_js = 0
-let g:vim_jsx_pretty_disable_tsx = 0
-let g:vim_jsx_pretty_template_tags = ['html', 'jsx']
-let g:vim_jsx_pretty_highlight_close_tag = 0
-let g:vim_jsx_pretty_colorful_config = 1
-
-" Установка плагинов JSX "
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-
-" Настройка JSX "
-let g:jsx_ext_required = 1
-let g:jsx_pragma_required = 1
-
 " Мои настройки проверка "
 
 " Включает подсветку синтаксиса "
@@ -156,8 +130,7 @@ set tabstop=4
 " Автоматическое  оформление отступов "
 set autoindent
 " Установка номеров строк "
-set number relativenumber
-set nu rnu
+set number
 " Настройка отступой "
 set tabstop=4
 " При использовании >> << сдвиг на 4 пробела "
@@ -168,9 +141,14 @@ set smarttab
 set expandtab
 " Включить подсветку синтаксиса Python "
 let python_highlight_all = 1
-
+" Преобразовать файлы в unix format "
+set fileformat=unix
+" Количество новых строк при прокрутке"
+set scrolloff=10
 " Подсвечиваем все что можно подсвечивать
 let python_highlight_all = 1
+" Снятие подсвети поиска"
+nnoremap ,<space> :nohlsearch<CR>
 " Включаем 256 цветов в терминале, мы ведь работаем из иксов?
 " Нужно во многих терминалах, например в gnome-terminal
 set t_Co=256
@@ -203,8 +181,8 @@ set showtabline=1
 set wrap
 set linebreak
 
-" Линия переноса
-set colorcolumn=99
+" Линия переноса "
+set colorcolumn=79
 set ruler
 
 " Вырубаем .swp и ~ (резервные) файлы
@@ -214,7 +192,6 @@ set encoding=utf-8 " Кодировка файлов по умолчанию
 set fileencodings=utf8,cp1251
 
 set clipboard=unnamed
-set ruler
 
 set hidden
 nnoremap <C-N> :bnext<CR>
@@ -224,4 +201,3 @@ nnoremap <C-P> :bprev<CR>
 set visualbell t_vb=
 
 colorscheme OceanicNext
-execute pathogen#infect()
