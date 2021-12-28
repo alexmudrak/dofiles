@@ -129,8 +129,11 @@ set hlsearch
 set tabstop=4
 " Автоматическое  оформление отступов "
 set autoindent
+
 " Установка номеров строк "
-set number
+set number relativenumber
+set nu rnu
+
 " Настройка отступой "
 set tabstop=4
 " При использовании >> << сдвиг на 4 пробела "
