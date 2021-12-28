@@ -203,6 +203,10 @@ set showtabline=1
 set wrap
 set linebreak
 
+" Линия переноса
+set colorcolumn=99
+set ruler
+
 " Вырубаем .swp и ~ (резервные) файлы
 set nobackup
 set noswapfile
