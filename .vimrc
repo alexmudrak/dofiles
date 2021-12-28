@@ -111,8 +111,11 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-let g:jedi#environment_path = "/usr/bin/python3"
-let g:jedi#environment_path = "./venv/bin/python3"
+if !isdirectory("./venv")
+    let g:jedi#environment_path = "/usr/bin/python3"
+else
+    let g:jedi#environment_path = "./venv/bin/python3"
+endif
 
 " Кастомные плагины "
 Plugin 'flazz/vim-colorschemes'
