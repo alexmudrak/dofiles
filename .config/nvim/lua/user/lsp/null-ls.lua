@@ -17,8 +17,8 @@ null_ls.setup({
 		-- formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		formatting.black.with({ extra_args = { "--line-length", "79" } }),
         formatting.isort.with({ extra_args = { "--line-length", "79", "--profile", "black" } }),
-        diagnostic.ruff.with({ extra_args = { "-n", "-e", "--stdin-filename", "$FILENAME", "-" }}),
-        formatting.ruff.with({ extra_args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" } }),
+        formatting.ruff.with({ args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" } }),
+        -- diagnostic.ruff.with({ args = { "-n", "-e", "--stdin-filename", "$FILENAME", "-" }}),
 		-- diagnostics.flake8
 	},
 })
